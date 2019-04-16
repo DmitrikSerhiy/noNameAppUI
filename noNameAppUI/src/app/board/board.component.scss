@@ -1,0 +1,15 @@
+@import "src/variables.scss";
+
+.board {
+    background-color: white;
+    margin: 0 auto;
+    width: 70%;
+    height: 600px;
+    border: 1px solid $text;
+    border-radius: 5px;
+}
+
+.board-menu {
+    height: 50px;
+    border-bottom: 1px solid $text;
+}

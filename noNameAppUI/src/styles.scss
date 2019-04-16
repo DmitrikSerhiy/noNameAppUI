@@ -1,5 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-$primary: #EDC7B7;
-$secondary: #EEE2DC;
-$text: #123C69;
-$textHeading: #AC3B61;
+@import "~bootstrap/dist/css/bootstrap.css";
+@import '~material-design-icons/iconfont/material-icons.css';
+@import "src/variables.scss";
+
+body {
+    color: $text;
+    background-color: $secondary;
+    font-family: 'Quicksand';
+}

@@ -1,6 +1,37 @@
-.nav{
-    background-color: azure;
-    width: 100%;
-    height: 10%;
-    position: relative;
+@import "src/variables.scss";
+
+$verticalMargin: auto 0px;
+$headerHeight: 60px;
+nav {
+    background-color: $primary;
+    color: $textHeading;
+    border-bottom: 1px solid $textHeading;
+    box-shadow: 0 0 18px $textHeading
+}
+
+.header-container {
+    background-color: $primary;
+    color: $text;
+    font-weight: 400;
+    border-bottom: 1px solid $textHeading;
+    box-shadow: 0 0 18px $textHeading;
+    height: $headerHeight;
+
+    .header-item {
+        height: $headerHeight;
+
+        h1, h2, h4, h5 {
+            margin: $verticalMargin;
+            &:hover {
+                cursor: pointer;
+                color: $textHeading;
+            }
+        }
+        h3 {
+            margin: $verticalMargin;
+            &:hover {
+                cursor: default;
+            }
+        }
+    }
 }
