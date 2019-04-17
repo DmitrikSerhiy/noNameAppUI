@@ -30,7 +30,7 @@ export class FakeTreeService {
     timeSpot: { hours: 0, minutes: 12 },
     charge: true,
     plotId: '123',
-    scenes: [this.scene1, this.scene2];
+    scenes: [this.scene1, this.scene2]
   };
   episode2: EpisodeDto = {
     id: '2344',
@@ -74,10 +74,26 @@ export class FakeTreeService {
     acts: [this.act2]
   };
 
+  allScreepts: TreeDto[] = [
+    this.script1, this.emptyScript
+  ];
+
   constructor() { }
 
-  getScripts(): Observable<string[]> {
-    return of([this.script1.movieTitle, this.emptyScript.movieTitle]);
+  getScripts(): Observable<any[]> {
+    return of(
+      [
+        {
+          id: this.script1.id, title: this.script1.movieTitle
+        },
+        {
+          id: this.emptyScript.id, title: this.emptyScript.movieTitle
+        }
+      ]);
+  }
+
+  getScript(scriptId: string): Observable<TreeDto> {
+    return of(this.allScreepts.find((s) => s.id === scriptId));
   }
 
   getfullScript(): Observable<TreeDto> {

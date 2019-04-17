@@ -1,6 +1,28 @@
-.node {
-    width: 50px;
-    height: 50px;
-    border: 1px solid;
-    border-radius: 50%;
+@import "src/variables.scss";
+
+@mixin invisibleInput {
+    border: 0px;
+    outline: none;
+    color: $text;
+};
+
+.node-container {
+    .title-row {
+        svg {
+            float: left;
+        }
+        input {
+            @include invisibleInput;
+            font-weight: 500;
+        }
+        h5 {
+            margin: 0;
+        }
+    }
+    p {
+        margin-left: 24px;
+        input {
+            @include invisibleInput;
+        }
+    }
 }

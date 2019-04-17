@@ -1,3 +1,12 @@
-<div class="node">
-  node
+<div class="node-container">
+  <div class="title-row">
+    <svg height="24" width="24">
+      <circle cx="12" cy="12" r="6" stroke="gray" stroke-width="2" fill="black" />
+    </svg>
+    <h5>{{node.title}} 
+      <span *ngIf='node.subtitle'>: </span> 
+      <input type="text" maxlength="100" value="{{node.subtitle}}" (keyup)="onSubtitle($event)"/></h5> 
+  </div>
+  <p *ngIf='isDescNotEmpty'>
+    <input #actDesc type="text" maxlength="300" value="{{node.description}}" (keyup)="onDescription($event)"/></p>
 </div>

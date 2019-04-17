@@ -4,7 +4,17 @@
     Welcome to {{ title }}!
   </h1>
 </div>
-<app-board></app-board>
+
+<div class="row">
+    <div class="col-2">
+      <app-scripts (selectedScript)='onSelect($event)' class="m-2"></app-scripts>
+    </div>
+    <div class="col-10">
+        <app-board [tree]='tree' class="m-2"></app-board>
+    </div>
+  </div>
+
+
 
 <router-outlet></router-outlet>
  

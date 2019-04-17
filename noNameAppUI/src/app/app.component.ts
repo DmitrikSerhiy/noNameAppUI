@@ -1,3 +1,4 @@
+import { TreeDto } from './core/types/tree/treeDto';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'noNameAppUI';
+
+  tree: TreeDto;
+
+  onSelect(script: TreeDto) {
+    this.tree = script;
+  }
 }

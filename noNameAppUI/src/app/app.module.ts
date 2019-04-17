@@ -1,3 +1,4 @@
+import { LeftSideBarModule } from './left-side-bar/left-side-bar.module';
 import { BoardModule } from './board/board.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,7 +18,8 @@ import { NodeComponent } from './board/node/node.component';
     AppRoutingModule,
     CoreModule,
     SharedModule,
-    BoardModule
+    BoardModule,
+    LeftSideBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BoardComponent } from './board.component';
 import { NodeComponent } from './node/node.component';
-import { NodeFactoryService } from './node-factory.service';
 
 @NgModule({
   declarations: [BoardComponent, NodeComponent],
@@ -14,7 +13,6 @@ import { NodeFactoryService } from './node-factory.service';
     BoardComponent
   ],
   providers: [
-    NodeFactoryService
   ],
   entryComponents: [
     NodeComponent
