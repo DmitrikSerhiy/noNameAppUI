@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewContainerRef  } from '@angular/core';
 import { NodeFactoryService } from './node-factory.service';
 
 @Component({
