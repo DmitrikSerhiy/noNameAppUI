@@ -3,10 +3,12 @@
     <svg height="24" width="24">
       <circle cx="12" cy="12" r="6" stroke="gray" stroke-width="2" fill="black" />
     </svg>
-    <h5>{{node.title}} 
+    <h5 class="node-title">{{node.title}} 
       <span *ngIf='node.subtitle'>: </span> 
-      <input type="text" maxlength="100" value="{{node.subtitle}}" (keyup)="onSubtitle($event)"/></h5> 
+      <input class="node-subtitle" type="text" maxlength="40" size="40" value="{{node.subtitle}}" (keyup)="onSubtitle($event)"/>
+    </h5> 
   </div>
-  <p *ngIf='isDescNotEmpty'>
-    <input #actDesc type="text" maxlength="300" value="{{node.description}}" (keyup)="onDescription($event)"/></p>
+  <textarea class="node-description" maxlength="200" cols="50" rows="1" value="{{node.description}}" (keyup)="onDescription($event)">
+  
+  </textarea>
 </div>

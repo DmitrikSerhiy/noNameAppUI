@@ -22,6 +22,7 @@ import { NodeComponent } from './board/node/node.component';
     LeftSideBarModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: []
 })
 export class AppModule { }

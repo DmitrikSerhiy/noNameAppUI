@@ -4,9 +4,12 @@
     border: 0px;
     outline: none;
     color: $text;
+    
 };
 
 .node-container {
+    border: 1px solid;
+    width: 100%;
     .title-row {
         svg {
             float: left;
@@ -14,15 +17,15 @@
         input {
             @include invisibleInput;
             font-weight: 500;
+           
         }
         h5 {
             margin: 0;
         }
     }
-    p {
+    .node-description {
+        @include invisibleInput;
         margin-left: 24px;
-        input {
-            @include invisibleInput;
-        }
+        resize: none;
     }
 }
