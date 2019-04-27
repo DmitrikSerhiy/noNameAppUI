@@ -7,6 +7,8 @@
     
 };
 
+$tab: 24px;
+
 .node-container {
     border: 1px solid;
     width: 100%;
@@ -25,7 +27,9 @@
     }
     .node-description {
         @include invisibleInput;
-        margin-left: 24px;
+        margin-left: $tab;
         resize: none;
+        overflow: hidden !important;
+        border: 1px solid black;
     }
 }

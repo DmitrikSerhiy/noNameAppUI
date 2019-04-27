@@ -3,7 +3,6 @@ import { NodeService } from './node.service';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NodeBase } from './node-types/node-base';
 import $ from 'jquery';
-import { nodeChildrenAsMap } from '@angular/router/src/utils/tree';
 
 @Component({
   selector: 'app-node',
@@ -13,7 +12,6 @@ import { nodeChildrenAsMap } from '@angular/router/src/utils/tree';
 export class NodeComponent implements OnInit {
 
   node: NodeBase;
-
   constructor(private nodeService: NodeService) { }
 
   ngOnInit() {
@@ -36,32 +34,36 @@ export class NodeComponent implements OnInit {
 
   onDescription(event: any) {
     const desc = $(event.target);
+    let text = event.target.value;
     if (this.onShiftEnter(event)) {
-      desc.blur().parent('.node-container').find('.node-subtitle').focus();
-      const text = event.target.value;
-      if (!text) {
-        desc.hide();
-      }
-      this.node.description = text;
+       desc.blur().parent('.node-container').find('.node-subtitle').focus();
     } else {
-      this.resizeDescription(event.target);
+      if (!this.shouldResizeDescription(event.target)) {
+        let currentDesc = text;
+        currentDesc = currentDesc.slice(0, -1);
+        currentDesc = currentDesc.replace(/(^[ \t]*\n)/gm, '');
+        text = currentDesc;
+      }
     }
 
+    this.node.description = text;
+  }
+
+  onDescriptionBlur(event: any) {
+    event.target.value = event.target.value.replace(/(^[ \t]*\n)/gm, '');
+    if (!event.target.value) {
+      $(event.target).remove();
+      // $(event.target).hide();
+    }
   }
 
   onShiftEnter(event: any) {
     return event.shiftKey && event.keyCode === 13 ? true : false;
   }
 
-  resizeDescription(textarea: HTMLElement) {
-    setTimeout(() => {
-      const lines = textarea.scrollHeight / parseInt($(textarea).css('lineHeight'), 10);
-      const maxHeith = 5 * parseInt($(textarea).css('lineHeight'), 10);
-      if (textarea.scrollHeight <= maxHeith) {
-        $(textarea).attr('overflow', 'auto');
-        textarea.style.cssText = 'height:auto; padding:0';
-        textarea.style.cssText = 'height:' + textarea.scrollHeight + 'px';
-      }
-    }, 0);
+  shouldResizeDescription(descriptionTextArea: HTMLElement) {
+    const lines = Math.round(descriptionTextArea.scrollHeight 
+      / parseInt($(descriptionTextArea).css('lineHeight'), 10));
+    return lines > 5 ? false : true;
   }
 }

@@ -5,10 +5,21 @@
     </svg>
     <h5 class="node-title">{{node.title}} 
       <span *ngIf='node.subtitle'>: </span> 
-      <input class="node-subtitle" type="text" maxlength="40" size="40" value="{{node.subtitle}}" (keyup)="onSubtitle($event)"/>
+      <input class="node-subtitle" 
+        type="text" maxlength="40" size="40" 
+        value="{{node.subtitle}}" 
+        (keypress)="onSubtitle($event)"/>
     </h5> 
   </div>
-  <textarea class="node-description" maxlength="200" cols="50" rows="1" value="{{node.description}}" (keyup)="onDescription($event)">
-  
+  <textarea class="node-description" 
+    autosize [maxRows]="5" 
+    [useImportant]=true 
+    cols="50" rows="1" 
+    value="{{node.description}}" 
+    (keypress)="onDescription($event)"
+    (blur)="onDescriptionBlur($event)">
   </textarea>
+  <div class="Episo">
+
+  </div>
 </div>
