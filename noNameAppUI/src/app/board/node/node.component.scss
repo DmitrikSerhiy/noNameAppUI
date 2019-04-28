@@ -29,7 +29,6 @@ $tab: 24px;
         @include invisibleInput;
         margin-left: $tab;
         resize: none;
-        overflow: hidden !important;
         border: 1px solid black;
     }
 }

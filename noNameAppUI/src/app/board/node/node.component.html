@@ -8,18 +8,23 @@
       <input class="node-subtitle" 
         type="text" maxlength="40" size="40" 
         value="{{node.subtitle}}" 
-        (keypress)="onSubtitle($event)"/>
+        (keydown)="onSubtitle($event)"/>
     </h5> 
   </div>
   <textarea class="node-description" 
-    autosize [maxRows]="5" 
-    [useImportant]=true 
-    cols="50" rows="1" 
+    cols="50"
     value="{{node.description}}" 
-    (keypress)="onDescription($event)"
-    (blur)="onDescriptionBlur($event)">
+    (keydown)="onDescription($event)"
+    autosize
+    >
   </textarea>
-  <div class="Episo">
+
+  <div class="Episode">
+
+      <!-- (blur)="onDescriptionBlur($event)"
+          autosize [maxRows]="5" 
+    [useImportant]=true  
+  -->
 
   </div>
 </div>
