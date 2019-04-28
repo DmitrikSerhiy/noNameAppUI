@@ -4,9 +4,7 @@
     border: 0px;
     outline: none;
     color: $text;
-    
 };
-
 $tab: 24px;
 
 .node-container {
@@ -29,6 +27,5 @@ $tab: 24px;
         @include invisibleInput;
         margin-left: $tab;
         resize: none;
-        border: 1px solid black;
     }
 }

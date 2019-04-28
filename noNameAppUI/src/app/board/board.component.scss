@@ -1,5 +1,12 @@
 @import "src/variables.scss";
 
+@mixin invisibleInput {
+    border: 0px;
+    outline: none;
+    color: $text;
+};
+$tab: 24px;
+
 .board {
     background-color: white;
     margin: 0 auto;
@@ -10,6 +17,26 @@
 }
 
 .board-menu {
-    height: 50px;
+    height: 70px;
     border-bottom: 1px solid $text;
+
+    .board-movie-name {
+        @include invisibleInput;
+        font-weight: 500;
+        font-size: 1.1em;
+        font-variant: small-caps;
+        text-decoration: underline;
+    }
+    .board-movie-subtitle {
+        @include invisibleInput;
+        font-weight: 500;
+    }
+}
+
+.board-movie-notes {
+    @include invisibleInput();
+    width: 100%;
+    padding-left: $tab;
+    padding-right: $tab;
+    resize: none;
 }

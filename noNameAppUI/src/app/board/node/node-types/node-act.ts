@@ -8,21 +8,16 @@ export class NodeAct implements NodeBase {
     subtitle: string;
     description: string;
     order: number;
-    secuance: number;
     episodes: NodeEpisode[];
 
     constructor(
         order: number,
-        secuance: number,
-        episodes: NodeEpisode[],
         subtitle: string = '',
         description: string = '') {
             this.icon = NodeIcon.circle;
             this.order = order;
             this.title = 'ACT ' + this.order;
-            this.secuance = secuance;
-            this.episodes = [...episodes];
             this.subtitle = subtitle ? subtitle : '';
             this.description = description ? description : '';
     }
-};
+}

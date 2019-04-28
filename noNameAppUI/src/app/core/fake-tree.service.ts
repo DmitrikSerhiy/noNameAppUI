@@ -46,30 +46,30 @@ export class FakeTreeService {
     id: '234',
     order: 1,
     name: 'Act 1',
-    desc: 'description of first act',
-    notes: 'my notes for the acts',
+    description: 'description of first act',
+    subtitle: 'my notes for the acts',
     episodes: [this.episode1, this.episode2]
   };
   act2: ActDto = {
     id: '432',
     order: 2,
     name: 'Act 2',
-    desc: 'description of second act',
-    notes: 'my notes for the acts',
+    description: 'description of second act',
+    subtitle: 'my notes for the acts',
     episodes: [this.episode1, this.episode2]
   };
 
   script1: TreeDto = {
     id: '123',
     movieTitle: 'Matrix',
-    subTitle: 'amaixing ciberpunk!',
+    subtitle: 'amaixing cyberpunk!',
     notes: 'some shit which has to describe current movie',
     acts: [this.act1, this.act2]
   };
   emptyScript: TreeDto = {
     id: '124',
     movieTitle: 'Halk',
-    subTitle: 'Marvel action movie!',
+    subtitle: 'Marvel action movie!',
     notes: 'some shit which has to describe current movie',
     acts: [this.act2]
   };

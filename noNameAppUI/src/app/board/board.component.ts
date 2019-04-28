@@ -9,7 +9,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 export class BoardComponent implements OnInit, OnChanges {
   @Input() tree: TreeDto;
   title: string;
-  scriptToEdit: TreeDto;
+  treeToEdit: TreeDto;
 
   ngOnChanges(changes: SimpleChanges): void {
     for (const propName in changes) {
@@ -26,10 +26,27 @@ export class BoardComponent implements OnInit, OnChanges {
 
   parseTree() {
     if (this.tree) {
-      this.scriptToEdit = this.tree;
+      console.log(this.tree);
+      this.treeToEdit = this.tree;
       this.title = this.tree.movieTitle;
     }
+  }
 
+  onTitle(event: any) {
+    const $title = $(event.target);
+    // if (this.onShiftEnter(event)) {
+    //   const desc = $($title.parents('.node-container')[0]).children('.node-description');
+    //   if (!desc.is(':visible')) {
+    //     desc.show();
+    //   }
+    //   event.preventDefault();
+    //   desc.focus();
+    //   this.node.subtitle = event.target.value;
+    // }
+  }
+
+  onShiftEnter(event: any) {
+    return event.shiftKey && event.keyCode === 13 ? true : false;
   }
 
 }

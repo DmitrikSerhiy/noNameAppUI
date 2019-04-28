@@ -1,23 +1,19 @@
 import { Injectable } from '@angular/core';
 import { NodeBase } from './node-types/node-base';
 import { NodeAct } from './node-types/node-act';
-import { NodeConfig } from './node-types/node-config';
-import { NodeEpisode } from './node-types/node-episode';
 
 @Injectable({
   providedIn: 'root'
 })
-export class NodeService {
+export class NodeFactory {
 
   constructor() { }
 
-  buildNode(type: string, config: NodeConfig): NodeBase {
+  createNode(type: string, config: NodeBase): NodeBase {
     switch (type) {
       case 'act': {
         return new NodeAct(
           config.order,
-          config.secuance,
-          config.nodes as NodeEpisode[],
           config.subtitle,
           config.description);
       }

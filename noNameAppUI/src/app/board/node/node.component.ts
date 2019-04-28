@@ -1,6 +1,5 @@
-import { NodeAct } from './node-types/node-act';
-import { NodeService } from './node.service';
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { NodeFactory } from './node.factory';
+import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import { NodeBase } from './node-types/node-base';
 import $ from 'jquery';
 
@@ -12,11 +11,16 @@ import $ from 'jquery';
 export class NodeComponent implements OnInit, AfterViewInit {
 
 
+  @Input() inputNode: NodeBase;
+  @Input() inputNodeType: string;
   node: NodeBase;
-  constructor(private nodeService: NodeService) { }
+  nodeType: any;
+  constructor(private nodeService: NodeFactory) { }
 
   ngOnInit() {
-    this.node = new NodeAct(1, 1, [], 'some subtitle', 's') as NodeAct;
+    this.node = this.inputNode;
+    this.nodeType = this.inputNodeType;
+    this.node = this.nodeService.createNode(this.nodeType, this.node);
   }
 
   ngAfterViewInit(): void {

@@ -1,3 +1,4 @@
+import { NodeBase } from './node-base';
 import { NodeIcon } from './node-icon';
 
 export interface NodeBase {
@@ -6,5 +7,6 @@ export interface NodeBase {
     subtitle: string;
     description: string;
     order: number;
-    secuance: number;
+    // secuance: number;
+    // childrens: NodeBase[];
 };

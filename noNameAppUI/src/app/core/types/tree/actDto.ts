@@ -4,7 +4,7 @@ export interface ActDto {
     id: string;
     order: number;
     name: string;
-    desc?: string;
-    notes?: string;
+    description?: string;
+    subtitle?: string;
     episodes?: EpisodeDto[];
-};
+}
