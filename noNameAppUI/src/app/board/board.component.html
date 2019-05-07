@@ -1,35 +1,29 @@
 <div class="board">
   <div class="board-menu">
-
-    <div class="d-inline-flex flex-row mt-2">
-      <h4 class="d-flex m-0 align-self-end">Board</h4>   
-      <div *ngIf='treeToEdit' class="d-flex m-0 ml-1 align-self-end">
-          <input class="board-movie-name p-0" 
-          type="text" maxlength="40" size="60"  
-          value="{{treeToEdit.movieTitle}}" 
-          (keydown)="onTitle($event)"/>
+    <div class="menu-info">
+      <div class="d-inline-flex flex-row mt-2">
+        <h4 class="d-flex m-0 align-self-end">Board</h4>
+        <div *ngIf='treeToEdit' class="d-flex m-0 ml-1 align-self-end title-container">
+          <input class="board-movie-title p-0" type="text" maxlength="35" value="{{treeToEdit.movieTitle}}"
+            (keydown)="onTitle($event)" />
+        </div>
       </div>
+      <input *ngIf='treeToEdit' class="board-movie-subtitle" type="text" maxlength="50"
+        value="{{treeToEdit.subtitle}}" (keydown)="onMovieSubtitle($event)" />
     </div>
-    <div *ngIf='treeToEdit'>
-      <input class="board-movie-subtitle" 
-        type="text" maxlength="40" size="60" 
-        value="{{treeToEdit.subtitle}}" 
-        (keydown)="onSubtitle($event)"/>
+    <div class="menu-options" *ngIf='treeToEdit'>
+      <button class="add-notes-button" *ngIf='!treeToEdit.notes' (click)='showNodes'>Add notes</button>
+      <button>func 1</button>
+      <button>func 2</button>
+    </div>
+  </div>
+  <div class="notes-container" *ngIf='treeToEdit && treeToEdit.notes'>
+    <h5>Notes</h5>
+    <textarea class="board-movie-notes" value="{{treeToEdit.notes}}" autosize (keydown)="onNotes($event)"></textarea>
   </div>
 
-  <div *ngIf='treeToEdit'>
-    <div>
-      <h5>Notes</h5>
-      <textarea class="board-movie-notes" 
-        value="{{treeToEdit.notes}}" 
-        autosize>
-    </textarea>
-    </div>
-    <app-node *ngFor='let currentNode of treeToEdit.acts' 
-      [inputNode]='currentNode' 
-      inputNodeType='act'>
+  <div *ngIf='treeToEdit' class="board-content">
+    <app-node *ngFor='let currentNode of treeToEdit.acts' [inputNode]='currentNode' inputNodeType='act'>
     </app-node>
   </div>
-
 </div>
-

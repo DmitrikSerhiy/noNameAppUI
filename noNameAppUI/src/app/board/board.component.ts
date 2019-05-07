@@ -1,5 +1,6 @@
 import { TreeDto } from 'src/app/core/types/tree/treeDto';
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, AfterViewInit } from '@angular/core';
+import $ from 'jquery';
 
 @Component({
   selector: 'app-board',
@@ -7,9 +8,10 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
   styleUrls: ['./board.component.scss']
 })
 export class BoardComponent implements OnInit, OnChanges {
+
   @Input() tree: TreeDto;
-  title: string;
   treeToEdit: TreeDto;
+  title: string;
 
   ngOnChanges(changes: SimpleChanges): void {
     for (const propName in changes) {
@@ -21,8 +23,7 @@ export class BoardComponent implements OnInit, OnChanges {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   parseTree() {
     if (this.tree) {
@@ -33,16 +34,47 @@ export class BoardComponent implements OnInit, OnChanges {
   }
 
   onTitle(event: any) {
-    const $title = $(event.target);
-    // if (this.onShiftEnter(event)) {
-    //   const desc = $($title.parents('.node-container')[0]).children('.node-description');
-    //   if (!desc.is(':visible')) {
-    //     desc.show();
-    //   }
-    //   event.preventDefault();
-    //   desc.focus();
-    //   this.node.subtitle = event.target.value;
-    // }
+    const $movieTitle = $(event.target);
+    if (this.onShiftEnter(event)) {
+      const $subTitle = $($movieTitle.parents('.board-menu')[0]).find('.board-movie-subtitle');
+      if (!$subTitle.is(':visible')) {
+        $subTitle.show();
+      }
+      event.preventDefault();
+      $subTitle.focus();
+    }
+    this.treeToEdit.movieTitle = event.target.value;
+  }
+
+  onMovieSubtitle(event: any) {
+    const $movieSubtitle = $(event.target);
+    let text = event.target.value;
+    if (this.onShiftEnter(event)) {
+      const $movieTitle = $($movieSubtitle.parents('.board-menu')[0]).find('.board-movie-title');
+      event.preventDefault();
+      if (!text) {
+        $movieSubtitle.hide();
+      } else {
+        text = text.trim();
+        $movieSubtitle.val(text);
+      }
+      $movieSubtitle.blur();
+      $movieTitle.focus();
+    }
+    this.treeToEdit.subtitle = text;
+  }
+
+  onNotes(event: any) {
+    const $notes = $(event.target);
+    let text = event.target.value;
+    if (this.onShiftEnter(event)) {
+      event.preventDefault();
+      this.treeToEdit.notes = text.trim();
+    }
+  }
+
+  showNodesContainer() {
+    this.treeToEdit.notes = " sasada";
   }
 
   onShiftEnter(event: any) {

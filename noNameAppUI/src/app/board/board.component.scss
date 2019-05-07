@@ -19,24 +19,41 @@ $tab: 24px;
 .board-menu {
     height: 70px;
     border-bottom: 1px solid $text;
+    display: flex;
+    flex-direction: row;
 
-    .board-movie-name {
-        @include invisibleInput;
-        font-weight: 500;
-        font-size: 1.1em;
-        font-variant: small-caps;
-        text-decoration: underline;
-    }
-    .board-movie-subtitle {
-        @include invisibleInput;
-        font-weight: 500;
+    .menu-info {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        margin-left: 4px;
+        .title-container {
+            width: 100%;
+            .board-movie-title {
+                @include invisibleInput;
+                font-weight: 500;
+                font-size: 1.1em;
+                font-variant: small-caps;
+                text-decoration: underline;
+                width: 100%;
+            }
+        }
+        .board-movie-subtitle {
+            @include invisibleInput;
+        }   
     }
 }
 
-.board-movie-notes {
-    @include invisibleInput();
-    width: 100%;
-    padding-left: $tab;
-    padding-right: $tab;
-    resize: none;
+.notes-container {
+    margin: 5px;
+    h5 {
+        margin: 0;
+    }
+    .board-movie-notes {
+        @include invisibleInput();
+        width: 100%;
+        padding-left: $tab;
+        padding-right: $tab;
+        resize: none;
+    }
 }
