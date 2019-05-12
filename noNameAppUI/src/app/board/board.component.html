@@ -12,12 +12,12 @@
         value="{{treeToEdit.subtitle}}" (keydown)="onMovieSubtitle($event)" />
     </div>
     <div class="menu-options" *ngIf='treeToEdit'>
-      <button class="add-notes-button" *ngIf='!treeToEdit.notes' (click)='showNodes'>Add notes</button>
-      <button>func 1</button>
+      <button class="add-notes-button" *ngIf='!treeToEdit.notes' (click)='showNodes()'>Add notes</button>
+      <button (click)='logNode()'>log node</button>
       <button>func 2</button>
     </div>
   </div>
-  <div class="notes-container" *ngIf='treeToEdit && treeToEdit.notes'>
+  <div class="notes-container" *ngIf='treeToEdit' [hidden]='!notesIsVisible'>
     <h5>Notes</h5>
     <textarea class="board-movie-notes" value="{{treeToEdit.notes}}" autosize (keydown)="onNotes($event)"></textarea>
   </div>

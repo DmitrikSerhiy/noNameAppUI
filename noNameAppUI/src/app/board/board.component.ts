@@ -1,5 +1,5 @@
 import { TreeDto } from 'src/app/core/types/tree/treeDto';
-import { Component, OnInit, Input, OnChanges, SimpleChanges, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import $ from 'jquery';
 
 @Component({
@@ -12,11 +12,14 @@ export class BoardComponent implements OnInit, OnChanges {
   @Input() tree: TreeDto;
   treeToEdit: TreeDto;
   title: string;
+  notesIsVisible: boolean;
 
   ngOnChanges(changes: SimpleChanges): void {
     for (const propName in changes) {
       if (propName === 'tree') {
         this.parseTree();
+        this.addListeners();
+        this.updateInitialState();
       }
     }
   }
@@ -28,7 +31,7 @@ export class BoardComponent implements OnInit, OnChanges {
   parseTree() {
     if (this.tree) {
       console.log(this.tree);
-      this.treeToEdit = this.tree;
+      this.treeToEdit = {...this.tree};
       this.title = this.tree.movieTitle;
     }
   }
@@ -73,12 +76,27 @@ export class BoardComponent implements OnInit, OnChanges {
     }
   }
 
-  showNodesContainer() {
-    this.treeToEdit.notes = " sasada";
+  showNodes() {
+    $('.notes-container').show();
+    //this.treeToEdit.notes = " sasada";
+  }
+
+  logNode(){
+    console.log(this.treeToEdit);
   }
 
   onShiftEnter(event: any) {
     return event.shiftKey && event.keyCode === 13 ? true : false;
   }
 
+  // addListeners() {
+  //   let $notes = $('.board-movie-notes');
+  //   $notes.on('blur', () => {
+  //     this.treeToEdit.notes = $notes.val().toString();
+  //   });
+  // }
+
+  // updateInitialState() {
+  //   this.notesIsVisible = this.treeToEdit.notes ? true : false;
+  // }
 }
